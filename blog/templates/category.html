@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title">{{ category.title }}</h1>
+
+    {% for post in category.posts.all %}
+    <article>
+        <h2 class="subtitle">{{ post.title }}</h2>
+
+        <time>{{ post.date_added|date:"d M, Y h:i" }}</time>
+
+        <p>{{ post.intro }}</p>
+
+        <a href="{% url 'detail' post.slug%}">Read more</a>
+    </article>
+    {% endfor %}
+{% endblock %}
